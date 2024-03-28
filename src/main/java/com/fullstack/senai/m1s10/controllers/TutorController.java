@@ -1,7 +1,7 @@
 package com.fullstack.senai.m1s10.controllers;
 
-import com.fullstack.senai.m1s10.entities.AlunoEntity;
-import com.fullstack.senai.m1s10.services.AlunoServiceImpl;
+import com.fullstack.senai.m1s10.entities.TutorEntity;
+import com.fullstack.senai.m1s10.services.TutorServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,33 +9,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("alunos")
-public class AlunoController {
-    private final AlunoServiceImpl service;
+@RequestMapping("tutores")
+public class TutorController {
+    private final TutorServiceImpl service;
 
-    public AlunoController(AlunoServiceImpl service) {
+    public TutorController(TutorServiceImpl service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<AlunoEntity>> get() {
+    public ResponseEntity<List<TutorEntity>> get() {
         return ResponseEntity.ok(service.buscarTodos());
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<AlunoEntity> getId(@PathVariable Long id) {
+    public ResponseEntity<TutorEntity> getId(@PathVariable Long id) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<AlunoEntity> post(@RequestBody AlunoEntity request) {
+    public ResponseEntity<TutorEntity> post(@RequestBody TutorEntity request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(service.criar(request)
-        );
+                );
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<AlunoEntity> put(@PathVariable Long id, @RequestBody AlunoEntity request) {
+    public ResponseEntity<TutorEntity> put(@PathVariable Long id, @RequestBody TutorEntity request) {
         return ResponseEntity.ok(service.alterar(id, request));
     }
 
