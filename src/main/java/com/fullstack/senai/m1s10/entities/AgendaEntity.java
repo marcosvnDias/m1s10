@@ -12,11 +12,11 @@ public class AgendaEntity {
     @Id private Long id;
 
     @ManyToOne
-    @Column(name = "aluno_id")
+    @JoinColumn(name = "aluno_id")
     private AlunoEntity aluno;
 
     @ManyToOne
-    @Column(name = "tutor_id")
+    @JoinColumn(name = "tutor_id")
     private TutorEntity tutor;
 
     private Date data;
